@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes/css/index.css' %}">
+</head>
+<body>
+    <h3> Welcome! </h3>
+    <div id="login_reg_form">
+    <fieldset id="f1">
+        <legend>Registration</legend>
+        <form action="/regvalidate" method="post" class="register">
+            {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags  == 'blank' %}
+                <p class="error">{{ message }}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            
+            <div>
+                <p class="rgtr">Name:</p> 
+                <input type="text" name="name" value={{ data.name }}>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'name' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <p class="rgtr">Alias:</p> 
+                <input type="text" name="alias" value={{ data.alias }}>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'name' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>   
+            <div>
+                <p class="rgtr">Email:</p> 
+                <input type="email" name="remail" value={{ data.remail }}>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'email' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <p class="rgtr">Password:</p> 
+                <input type="password" name="rpassw" >
+                <p class="passw">*Password should be at least 8 characters</p>
+            </div>
+            <div>
+                <p class="rgtr">Confirm Password:</p>
+                <input type="password" name="cpassw">
+            </div>
+            <div>
+                <p class="rgtr">Date of Birth:</p>
+                <input type="date" name="dob">
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'dob' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            <p class="rgtr"><input type="submit" name="submit" id="reg_sub"></p>
+        </form>
+    </fieldset>
+    <fieldset id="f2">
+        <legend>Login</legend>
+        <form action="/validate" method="post" class="login_form">
+            {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags  == 'invalid' %}
+                <p class="error">{{ message }}</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            <div class="login">
+                <p class="log">Email:</p> 
+                <input type="email" name="lemail" id='email'>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'lemail' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <p class="log">Password:</p> 
+                <input type="password" name="lpassw" id='passw'>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags  == 'lpassword' %}
+                    <p class="error">{{ message }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <input type="submit" value="Submit" id="btn_sub"> 
+            </div>           
+        </form>
+    </fieldset>
+    </div>
+    <!-- <a href="/register"> Register</a> -->
+</body>
+</html>

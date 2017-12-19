@@ -1,0 +1,133 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/* div{
+    display: inline-block;
+    height: 800px;
+    width: 48%;
+    border: 3px solid black;
+    margin: 5px;
+} */
+
+#title_bar{
+    display: block;
+    width: 95%;
+    height: 20px;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+h3{
+    display: inline;
+    margin-left: 30px;
+}
+
+#dashboard{
+    margin-left: 800px;
+    display: inline;
+}
+
+#logout{
+    margin-left: 60px;
+    display: inline-block;
+}
+
+#quotes_content1{
+    display: block;
+    width: 95%;
+    margin: 10px;
+    margin-top: 10px;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+h4{
+    margin: 5px;
+}
+
+#quotes_display{
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid red;
+    height: 400px;
+    overflow-x: scroll;
+}
+
+#quotes_favorites{
+    display: inline-block;
+    width: 45%;
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid green;
+    height: 600px;
+}
+
+fieldset{
+    width: 80%;
+    margin: 5px;
+    padding: 5px;
+    height: 200px;
+    overflow-x: scroll;
+}
+
+#quote_sub,#quote_add,#quote_rem{
+    color: white;
+    background-color: blue;
+    height: 20px;
+    width: 100px;
+    margin-left: 80px;
+}
+form{
+    height: 100px;
+    padding: 3px;
+    margin: 2px;
+    margin-top: 100px;
+}
+p{
+    margin: 5px;
+    padding: 2px;
+}
+textarea{
+    display: inline-block;
+    height: 100px;
+    width: 30%;
+    resize: none;
+}
+
+.error{
+    color: red;
+    font-size: 0.8em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.all_quotes{
+    height: 100px;
+    width: 80%;
+    border: 2px solid black;
+}
+
+.quotes_form{
+    margin: 3px;
+}
+
+.poster{
+    font-size: 0.8em;
+}
+
+#quote_add{
+    margin-left: 120px;
+}
+
+#quote_rem{
+    margin-left: 100px;
+    width: 115px;
+}
+
+span{
+    color: red;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes/css/quotesWall.css' %}">
+</head>
+<body>
+    <div id="title_bar">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags  == 'user' %}
+                <h3>{{ message }}</h3>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        <a id="logout" href="/logout">Logout</a>
+    </div>
+    <div id="quotes_content1">
+        <div id="quotes_display">
+            <h4>Quotable Quotes</h4>
+            {% for quote in quotes %}
+            <div class="all_quotes">
+                <form action="/quoteAddFav/{{ quote.id }}" method="post" class="quotes_form">
+                    {% csrf_token %}
+                    <p>{{ quote.message }}</p>
+                    <p class="poster">Posted by: <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a></p>
+                    <button id="quote_add" > Add to my list</button>
+                </form>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+        <div id="quotes_favorites">
+            <fieldset>
+                <legend>Your Favorites</legend>
+                {% for quote in fav_quotes %}
+                <div class="all_quotes">
+                    <form action="/quoteRemoveFav/{{ quote.id }}" method="post" class="quotes_form">
+                        {% csrf_token %}
+                        <p>{{ quote.message }}</p>
+                        <p class="poster">Posted by: <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a></p>
+                        <button id="quote_rem" > Remove from my list</button>
+                    </form>
+                </div>
+                {% endfor %}
+                <br>
+            </fieldset>
+            <div>
+                <form action="/quotesValidate" method="post">
+                    {%csrf_token%}
+                    <h4>Contribute a Quote</h4>
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags  == 'blank' %}
+                        <p class="error">{{ message }}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <p>Quoted by:<input type="text" name="quoted_by"></p>
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags  == 'quoted_by' %}
+                        <p class="error">{{ message }}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <p>Message: <textarea name="message"></textarea></p>
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags  == 'message' %}
+                        <p class="error">{{ message }}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    <button name="quote_sub" id="quote_sub">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

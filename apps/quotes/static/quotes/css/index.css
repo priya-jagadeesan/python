@@ -1,0 +1,113 @@
+body{
+    margin: 20px;
+    padding: 20px;
+}
+
+#login_reg_form{
+    margin: 20px;
+    padding: 20px;
+    height: 500px;
+
+}
+
+.login {
+    margin: 20px;
+    padding: 20px;
+    height: 200px;
+    width: 450px;
+    /* border: 2px solid black; */
+}
+
+.log{
+    width: 100px;
+    margin: 10px;
+}
+.rgtr{
+    display: inline-block;
+}
+
+#email,#passw{
+    margin: 10px;
+    width: 250px;
+    height: 20px;
+    display: inline-block;
+}
+
+select{
+    margin: 5px;
+    padding: 5px;
+    width: 90px;
+}
+
+textarea{
+    margin: 5px;
+    width: 250px;
+    height: 90px;
+}
+
+#btn_sub,#reg_sub{
+    height: 30px;
+    width: 90px;
+    margin-left: 160px;
+    background-color: lightblue;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.main_blk{
+    margin: 20px;
+    padding: 20px;
+    height: 250px;
+    width: 350px;
+    /* border: 2px solid black; */
+}
+
+.register{
+    font-size: 1em;
+    margin: 20px;
+    padding: 20px;
+    height: 400px;
+    width: 350px;
+    /* border: 2px solid black; */
+    display: inline-block;
+}
+
+.login_form{
+    display: inline-block;
+}
+
+p.new{
+    font-size: 0.75em;
+}
+
+.error,.password{
+    color: red;
+    font-size: 0.8em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.passw{
+    font-size: 0.8em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.success{
+    /* font-weight: bold; */
+    font-size: 1.4em;
+}
+
+#where{
+    color: green;
+}
+
+fieldset{
+    width: 35%;
+    display: inline;
+    margin: 10px;
+}
+
+#f1{
+    vertical-align: top;
+}
