@@ -10,13 +10,7 @@
 </head>
 <body>
     <div id="title_bar">
-            {% if messages %}
-            {% for message in messages %}
-            {% if message.extra_tags  == 'user' %}
-                <h3>{{ message }}</h3>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+        <h3>Welcome {{ user.alias }}</h3>
         <a id="logout" href="/logout">Logout</a>
     </div>
     <div id="quotes_content1">
@@ -26,9 +20,11 @@
             <div class="all_quotes">
                 <form action="/quoteAddFav/{{ quote.id }}" method="post" class="quotes_form">
                     {% csrf_token %}
-                    <p>{{ quote.message }}</p>
-                    <p class="poster">Posted by: <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a></p>
+                    <p>{{ quote.quoted_by }}:  {{ quote.message }}</p>
+                    <p class="poster">Posted by: 
+                    <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a>
                     <button id="quote_add" > Add to my list</button>
+                    </p>
                 </form>
             </div>
             <br>
@@ -41,9 +37,11 @@
                 <div class="all_quotes">
                     <form action="/quoteRemoveFav/{{ quote.id }}" method="post" class="quotes_form">
                         {% csrf_token %}
-                        <p>{{ quote.message }}</p>
-                        <p class="poster">Posted by: <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a></p>
+                        <p>{{ quote.quoted_by }}:  {{ quote.message }}</p>
+                        <p class="poster">Posted by: 
+                        <a href=/users/{{ quote.posted_by.id }}>{{ quote.posted_by.alias }} </a>
                         <button id="quote_rem" > Remove from my list</button>
+                        </p>
                     </form>
                 </div>
                 <br>

@@ -62,17 +62,22 @@ def regvalidate(request):
 ##=========================================================================##  
 
 def quotesWall(request):
-    if not request.session['user_id']:
-        return redirect(index)
-    else:
-        user = User.objects.get(id=request.session['user_id'])
-        # quotes = Quote.objects.exclude(posted_by=request.session['user_id'])
-        quotes  = Quote.objects.exclude(id__in=user.favorite_quotes.all())
-        fav_quotes = Quote.objects.get_quotes_fav(request.session['user_id'])
-        data = {"quotes" : quotes,
+    try:
+        if not request.session['user_id']:
+            return redirect(index)
+        else:
+            user = User.objects.get(id=request.session['user_id'])
+            # quotes = Quote.objects.exclude(posted_by=request.session['user_id'])
+            quotes  = Quote.objects.exclude(id__in=user.favorite_quotes.all())
+            fav_quotes = Quote.objects.get_quotes_fav(request.session['user_id'])
+            data = {
+                "user" : user,
+                "quotes" : quotes,
                 "fav_quotes" : fav_quotes
-        }
-        return render(request,"quotes/quotesWall.html",data)
+            }
+            return render(request,"quotes/quotesWall.html",data)
+    except:
+        return redirect(index)
 
 ##=========================================================================##
 ##        Validate user added Quotes wall                                  ##
@@ -105,7 +110,6 @@ def quoteRemFav(request,id):
     else:
         return redirect(quotesWall)
 
-
 def userShow(request,id):
     user_details = User.objects.get_user_postedQuotes(id)
     if not user_details:
@@ -115,5 +119,5 @@ def userShow(request,id):
     return render(request,"quotes/userDisplay.html",user_details)
 
 def logout(request):
-    del request.session
+    del request.session['user_id']
     return redirect(index)
